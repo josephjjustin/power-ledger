@@ -1,5 +1,6 @@
 package com.power.plant;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,7 @@ public class PowerPlantServiceApplication {
     SpringApplication.run(PowerPlantServiceApplication.class, args);
   }
 
+  @Hidden
   @GetMapping("/")
   public void home(final HttpServletResponse response) throws IOException {
     response.sendRedirect("swagger-ui/index.html");
