@@ -31,13 +31,13 @@ public class PowerPlantService {
     var entities = batteryRepository.findAllByPostalCodeLessThanEqualAndPostalCodeGreaterThanEqual(
         endPostalCode, startPostalCode);
     BatteryResponse.BatteryResponseBuilder builder = BatteryResponse.builder();
-    List<String> names = entities.stream().map(BatteryEntity::getName).toList();
+    List<String> names = entities.stream().map(BatteryEntity::getName).sorted().toList();
     Statistics.StatisticsBuilder statisticsBuilder = getStatisticsBuilder(entities);
     return builder.names(names).statistics(statisticsBuilder.build()).build();
   }
 
   private StatisticsBuilder getStatisticsBuilder(List<BatteryEntity> entities) {
-    var statistics = entities.stream().mapToInt(x -> x.getWattCapacity().intValue())
+    var statistics = entities.stream().mapToInt(BatteryEntity::getWattCapacity)
         .summaryStatistics();
     StatisticsBuilder statisticsBuilder = Statistics.builder();
     statisticsBuilder.total(statistics.getSum());

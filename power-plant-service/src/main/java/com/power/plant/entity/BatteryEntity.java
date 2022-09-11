@@ -2,12 +2,12 @@ package com.power.plant.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "battery")
+@Builder
 public class BatteryEntity {
 
   @Id
@@ -26,6 +27,6 @@ public class BatteryEntity {
 
   private Integer postalCode;
 
-  private BigDecimal wattCapacity;
+  private Integer wattCapacity;
 
 }

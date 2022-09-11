@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface PowerPlantApi {
 
-  @PostMapping("/batteries")
-  List<Battery> createBatteries(@RequestBody List<Battery> battery);
+  String BATTERIES = "/batteries";
+  String BATTERIES_POSTAL_CODE_START_START_END_END = "/batteries/postalCode/start/{start}/end/{end}";
+
+  @PostMapping(BATTERIES)
+  List<Battery> createBatteries(@RequestBody List<Battery> batteries);
 
 
-  @GetMapping("/batteries/postalCode/start/{start}/end/{end}")
+  @GetMapping(BATTERIES_POSTAL_CODE_START_START_END_END)
   BatteryResponse getBatteriesByPostalCodeRange(@PathVariable Integer start, @PathVariable Integer end);
 
 }
