@@ -1,0 +1,7 @@
+
+spring:
+  application:
+    name: power-plant-service
+springdoc:
+  swagger-ui:
+    queryConfigEnabled: true
